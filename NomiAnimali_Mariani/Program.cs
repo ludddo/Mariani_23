@@ -64,7 +64,8 @@ namespace NomiAnimali_Mariani
                     case 7: // Funziona Visualizzare Nomi
                         Visualizza(array);
                         break;
-                    case 8:
+                    case 8: // Funzione Ricerca Nome Lungo e Nome Corto
+                        NomeLungoNomeCorto(array);
                         break;
                     case 9:
                         break;
@@ -132,6 +133,33 @@ namespace NomiAnimali_Mariani
                 if (array[i] != null)
                 Console.WriteLine(array[i]);
             }
+        }
+        private static void NomeLungoNomeCorto(string[] array)
+        {
+            string NomeCorto="", NomeLungo="";
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = 0; j < array[i].Length; j++)
+                {
+                    if (array[i].Length >= array[j].Length)
+                    {
+                        NomeLungo = array[i];
+                    }
+                }
+            }
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = 0; j < array[i].Length; j++)
+                {
+                    if (array[i].Length <= array[j].Length)
+                    {
+                        NomeCorto = array[i];
+                    }
+                }
+            }
+            
+            Console.WriteLine("Il nome più corto è " + NomeCorto);
+            Console.WriteLine("Il nome più corto è " + NomeLungo);
         }
 
         private static void BubbleSort(ref string[] vett)
