@@ -61,7 +61,8 @@ namespace NomiAnimali_Mariani
                         string parolaGiusta = Console.ReadLine();
                         ModificaNome(ref array, parola, parolaGiusta);
                         break;
-                    case 7:
+                    case 7: // Funziona Visualizzare Nomi
+                        Visualizza(array);
                         break;
                     case 8:
                         break;
@@ -69,7 +70,6 @@ namespace NomiAnimali_Mariani
                         break;
                 }
                 
-                for (int i = 0; i < dim; i++) Console.Write(array[i]);
                 Console.WriteLine("Premere un pulsante per continuare...");
                 Console.ReadLine();
                 
@@ -122,6 +122,15 @@ namespace NomiAnimali_Mariani
                     array[i] = parolaGiusta;
                     break;
                 }
+            }
+        }
+
+        private static void Visualizza(string[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] != null)
+                Console.WriteLine(array[i]);
             }
         }
 
