@@ -51,13 +51,21 @@ namespace NomiAnimali_Mariani
                             Console.WriteLine("La parola è stata trovata in posizione " + ricseq+1);
                         }
                         break;
-                    case 5:
+                    case 5: // Funzione Nomi Ripetuti
+                        NomiRipetuti(ref array);
                         break;
-                    case 6:
+                    case 6: // Funzione Modifica Nome
+                        Console.WriteLine("Inserisci il nome che vuoi modificare");
+                        parola = Console.ReadLine();
+                        Console.WriteLine("Inserisci il nome che vuoi assegnare");
+                        string parolaGiusta = Console.ReadLine();
+                        ModificaNome(ref array, parola, parolaGiusta);
                         break;
                     case 7:
                         break;
                     case 8:
+                        break;
+                    case 9:
                         break;
                 }
                 
@@ -101,6 +109,21 @@ namespace NomiAnimali_Mariani
             return -1;
         }
 
+        private static void NomiRipetuti(ref string[] array)
+        {
+
+        }
+        private static void ModificaNome(ref string[] array, string parola, string parolaGiusta)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i].Equals(parola))
+                {
+                    array[i] = parolaGiusta;
+                    break;
+                }
+            }
+        }
 
         private static void BubbleSort(ref string[] vett)
         {
