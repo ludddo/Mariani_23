@@ -81,8 +81,18 @@ namespace NomiAnimali_Mariani
 
         private static void BubbleSort(ref string[] vett)
         {
-
+            int x, y;
+            string temp;
+            for (x = 0; x < vett.Length - 1; x++)                     // ripeti per tutti i numeri
+            {
+                for (y = 0; y < vett.Length - 1; y++)                 // li confronto tutti a coppie
+                    if (string.Compare(vett[y],vett[y+1]) == 1)//vet[y] > vet[y + 1])                        // se ne trovo uno maggiore
+                    {
+                        temp = vett[y];                          // li scambio tra loro
+                        vett[y] = vett[y + 1];
+                        vett[y + 1] = temp;
+                    }                                               // fine scambio
+            }
         }
-        
     }
 }
