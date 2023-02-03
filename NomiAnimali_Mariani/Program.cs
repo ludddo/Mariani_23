@@ -15,6 +15,7 @@ namespace NomiAnimali_Mariani
             string[] array = new string[dim];
             int scelta;
             int pos = 0;
+            string parola;
 
             do 
             {
@@ -24,14 +25,18 @@ namespace NomiAnimali_Mariani
 
                 switch (scelta)
                 {
-                    case 1:
+                    case 1: // Funzione Inserimento
                         Console.WriteLine("Inserire il nome di animale da aggiungere");
-                        string parola = Console.ReadLine();
+                        parola = Console.ReadLine();
                         Inserimento(ref array, parola, ref pos);
                         break;
-                    case 2:
+                    case 2: // Funzione Cancellazione
+                        Console.WriteLine("Inserire il nome di animale da cancellare");
+                        parola = Console.ReadLine();
+                        Cancellazione(ref array, parola);
                         break;
-                    case 3:
+                    case 3: // Funzione Ordinamemto Nomi (Bubble Sort)
+                        BubbleSort(ref array);
                         break;
                     case 4:
                         break;
@@ -45,8 +50,9 @@ namespace NomiAnimali_Mariani
                         break;
                 }
                 
+                for (int i = 0; i < dim; i++) Console.Write(array[i]);
                 Console.WriteLine("Premere un pulsante per continuare...");
-                char c = char.Parse(Console.ReadLine());
+                Console.ReadLine();
                 
             } while (scelta != 0);
         }
@@ -57,27 +63,26 @@ namespace NomiAnimali_Mariani
             posizione++;
         }
 
-        private static void BubbleSort(int[] vett)
+        private static void Cancellazione(ref string[] array, string parola)
         {
-            int temp = 0; //variabile temporanea per lo scambio degli elementi
-            int flag = 0; //variabile di controllo sul ciclo esterno
-            int n = vett.Length; //variabile inizializzata alla dimensione dell'array
-            int p = vett.Length; //variabile per fermarsi al punto del ciclo precedente
-            do
+            for (int i = 0; i < array.Length; i++)
             {
-                flag = 0; //reiniziallizzo a zero il flag
-                for (int i = 0; i < (n - 1); i++)
-                    if (vett[i] > vett[i + 1])
+                if (array[i] == parola)
+                {
+                    int b = i;
+                    while (b < array.Length - 1)
                     {
-                        temp = vett[i];
-                        vett[i] = vett[i + 1];
-                        vett[i + 1] = temp;
-                        flag = 1; //se avviene lo scambio modifico il valore del flag
-                        p = i + 1; //assegno a p il valore del punto in cui avviene lo scambio
+                        array[b] = array[b + 1];
+                        b++;
                     }
-                n = p; //assegno ad n (lunghezza array) il valore di p per interrompere in questo punto
+                }
             }
-            while (flag == 1);
-        }    
+        }
+
+        private static void BubbleSort(ref string[] vett)
+        {
+
+        }
+        
     }
 }
