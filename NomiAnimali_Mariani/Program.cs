@@ -38,7 +38,18 @@ namespace NomiAnimali_Mariani
                     case 3: // Funzione Ordinamemto Nomi (Bubble Sort)
                         BubbleSort(ref array);
                         break;
-                    case 4:
+                    case 4: // Funzione Ricerca Sequenziale
+                        Console.WriteLine("Inserire il nome di animale da ricercare");
+                        parola = Console.ReadLine();
+                        int ricseq = RicercaSequenziale(ref array, parola);
+                        if (ricseq == -1)
+                        {
+                            Console.WriteLine("La parola non è stata trovata");
+                        }
+                        else
+                        {
+                            Console.WriteLine("La parola è stata trovata in posizione " + ricseq+1);
+                        }
                         break;
                     case 5:
                         break;
@@ -62,7 +73,6 @@ namespace NomiAnimali_Mariani
             array[posizione] = parola;
             posizione++;
         }
-
         private static void Cancellazione(ref string[] array, string parola)
         {
             for (int i = 0; i < array.Length; i++)
@@ -78,6 +88,19 @@ namespace NomiAnimali_Mariani
                 }
             }
         }
+
+        private static int RicercaSequenziale(ref string[] array, string parola)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i].Equals(parola))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
 
         private static void BubbleSort(ref string[] vett)
         {
