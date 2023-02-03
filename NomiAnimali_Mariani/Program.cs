@@ -11,8 +11,10 @@ namespace NomiAnimali_Mariani
     {
         static void Main(string[] args)
         {
-            string[] array = new string[1000];
+            int dim = 100;
+            string[] array = new string[dim];
             int scelta;
+            int pos = 0;
 
             do 
             {
@@ -25,7 +27,7 @@ namespace NomiAnimali_Mariani
                     case 1:
                         Console.WriteLine("Inserire il nome di animale da aggiungere");
                         string parola = Console.ReadLine();
-                        Inserimento(ref array, parola);
+                        Inserimento(ref array, parola, ref pos);
                         break;
                     case 2:
                         break;
@@ -43,17 +45,16 @@ namespace NomiAnimali_Mariani
                         break;
                 }
                 
-                for (int i = 0; i < array.Length; i++) Console.Write(array[i]);
-                Thread.Sleep(2564);
+                Console.WriteLine("Premere un pulsante per continuare...");
+                char c = char.Parse(Console.ReadLine());
+                
             } while (scelta != 0);
         }
 
-        private static void Inserimento(ref string[] array, string parola)
+        private static void Inserimento(ref string[] array, string parola, ref int posizione)
         {
-            for (int i = 0; i < parola.Length; i++)
-            {
-                array[i] = parola[i];
-            }
+            array[posizione] = parola;
+            posizione++;
         }
 
         private static void BubbleSort(int[] vett)
